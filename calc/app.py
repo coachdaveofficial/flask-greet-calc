@@ -1,8 +1,12 @@
 # Put your app in here.
-
-from flask import Flask, request
+from random import randint
+from flask import Flask, request, render_template
 import operations
+from flask_debugtoolbar import DebugToolbarExtension
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "LEAVEIT"
+
+debug = DebugToolbarExtension(app)
 
 @app.route('/')
 def home_page():
@@ -63,6 +67,12 @@ def results(operation):
     <h2>{result}</h2>
     
   """
+
+# @app.route('/lucky/')
+# def lucky_number():
+#     num = randint(1,20)
+#     return render_template('lucky.html', lucky_num=num)
+
 
 
 if __name__ == "__main__":
